@@ -1,0 +1,31 @@
+@using APBox.Context;
+@{
+    var _db = new APBoxContext();
+    var usuarioId = Convert.ToInt32(Session["UsuarioId"]);
+    var usuario = _db.Usuarios.Find(usuarioId);
+}
+
+
+<!--begin::Toolbar wrapper-->
+<div class="topbar d-flex align-items-stretch flex-shrink-0" id="kt_topbar">
+
+    @if (Request.IsAuthenticated)
+    {
+        <!--begin::User-->
+    <div class="d-flex align-items-center ms-2 ms-lg-3" id="kt_header_user_menu_toggle">
+        <!--begin::Menu wrapper-->
+        <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+            <img src="~/_CDN/custom/media/avatars/user.png" alt="user" />
+        </div>
+        <!--layout-partial:partials/menus/_user-account-menu.html-->
+        @Html.Partial("~/Views/Shared/partials/menus/_user-account-menu.cshtml")
+
+        <!--end::Menu wrapper-->
+    </div>
+        <!--end::User -->
+    }
+
+    <!--begin::Heaeder menu toggle-->
+    <!--end::Heaeder menu toggle-->
+</div>
+<!--end::Toolbar wrapper-->
